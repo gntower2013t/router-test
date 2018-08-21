@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-export const ID = 'admin id';
-
 @Component({
   template:  `
     <h3>ADMIN</h3>

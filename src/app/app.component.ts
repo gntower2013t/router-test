@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ID } from "./admin/admin.component";
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +15,5 @@ import { ID } from "./admin/admin.component";
     <router-outlet name="popup"></router-outlet>
   `
 })
-export class AppComponent implements OnInit {
-  ngOnInit(): void {
-    console.log(`app init ${ID}`)
-  }
+export class AppComponent {
 }

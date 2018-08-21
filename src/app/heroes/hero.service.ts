@@ -1,7 +1,6 @@
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export class Hero {
   constructor(public id: number, public name: string) { }
@@ -18,11 +17,12 @@ const HEROES = [
 
 @Injectable()
 export class HeroService {
-  getHeroes() { return Observable.of(HEROES); }
+  getHeroes() { return of(HEROES); }
 
   getHero(id: number | string) {
-    return this.getHeroes()
+    return this.getHeroes().pipe(
       // (+) before `id` turns the string into a number
-      .map(heroes => heroes.find(hero => hero.id === +id));
+      map(heroes => heroes.find(hero => hero.id === +id))
+    );
   }
 }

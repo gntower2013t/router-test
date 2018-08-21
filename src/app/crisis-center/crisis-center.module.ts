@@ -11,7 +11,6 @@ import { CrisisDetailComponent }     from './crisis-detail.component';
 
 import { CrisisCenterRoutingModule } from './crisis-center-routing.module';
 
-
 @NgModule({
   imports: [
     CommonModule,
