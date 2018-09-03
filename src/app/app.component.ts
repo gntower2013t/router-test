@@ -13,6 +13,8 @@ import { Component } from '@angular/core';
     </nav>
     <router-outlet></router-outlet>
     <router-outlet name="popup"></router-outlet>
+    <router-outlet name="text"></router-outlet>
+    <router-outlet name="text2"></router-outlet>
   `
 })
 export class AppComponent {

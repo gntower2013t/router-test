@@ -15,6 +15,8 @@ import { LoginComponent }          from './login.component';
 import { PageNotFoundComponent }   from './not-found.component';
 
 import { DialogService }           from './dialog.service';
+import { TextComponent } from './text/text.component';
+import { Text2Component } from './text2/text2.component';
 
 @NgModule({
   imports: [
@@ -29,7 +31,9 @@ import { DialogService }           from './dialog.service';
     AppComponent,
     ComposeMessageComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TextComponent,
+    Text2Component
   ],
   providers: [
     DialogService
