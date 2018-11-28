@@ -1,0 +1,10 @@
+node_modules/
+node_modules
+.vscode
+dist/
+*.patch
+target/
+*.log
+karma-reports/
+.flattened-pom.xml
+node/
