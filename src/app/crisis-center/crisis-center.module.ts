@@ -10,6 +10,7 @@ import { CrisisCenterHomeComponent } from './crisis-center-home.component';
 import { CrisisDetailComponent }     from './crisis-detail.component';
 
 import { CrisisCenterRoutingModule } from './crisis-center-routing.module';
+import { NGX_LAZY_VIEW_ENTRY_POINT } from '../ngx-lazy/lazy-entry-point.injection-token';
 
 @NgModule({
   imports: [
@@ -24,7 +25,9 @@ import { CrisisCenterRoutingModule } from './crisis-center-routing.module';
     CrisisDetailComponent
   ],
   providers: [
-    CrisisService
-  ]
+    CrisisService,
+    { provide: NGX_LAZY_VIEW_ENTRY_POINT, useValue: CrisisCenterComponent }
+  ],
+  entryComponents: [CrisisCenterComponent]
 })
 export class CrisisCenterModule {}

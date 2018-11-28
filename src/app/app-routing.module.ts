@@ -19,11 +19,11 @@ const appRoutes: Routes = [
     loadChildren: 'app/admin/admin.module#AdminModule',
     canLoad: [AuthGuard]
   },
-  {
+/*   {
     path: 'crisis-center',
     loadChildren: 'app/crisis-center/crisis-center.module#CrisisCenterModule',
-    data: { preload: true }
-  },
+    // data: { preload: true }
+  }, */
   { path: '',   redirectTo: '/superheroes', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -32,11 +32,11 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      {
+/*       {
         enableTracing: true, // <-- debugging purposes only
         preloadingStrategy: SelectivePreloadingStrategy,
 
-      }
+      } */
     )
   ],
   exports: [
