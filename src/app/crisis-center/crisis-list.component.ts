@@ -1,9 +1,10 @@
 import { Component, OnInit }        from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 import { Crisis, CrisisService } from './crisis.service';
 import { Observable }            from 'rxjs';
 import { switchMap }             from 'rxjs/operators';
+import { printUrl } from './my-child/my-child.component';
 
 @Component({
   template: `
@@ -25,8 +26,14 @@ export class CrisisListComponent implements OnInit {
 
   constructor(
     private service: CrisisService,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+      // console.log(route.component);
+
+    // printUrl('list', this.route)
+
+  }
 
   ngOnInit() {
     this.crises$ = this.route.paramMap.pipe(

@@ -10,6 +10,8 @@ import { CrisisCenterHomeComponent } from './crisis-center-home.component';
 import { CrisisDetailComponent }     from './crisis-detail.component';
 
 import { CrisisCenterRoutingModule } from './crisis-center-routing.module';
+import { Router } from '@angular/router';
+import { MyChildComponent } from './my-child/my-child.component';
 
 @NgModule({
   imports: [
@@ -21,10 +23,16 @@ import { CrisisCenterRoutingModule } from './crisis-center-routing.module';
     CrisisCenterComponent,
     CrisisListComponent,
     CrisisCenterHomeComponent,
-    CrisisDetailComponent
+    CrisisDetailComponent,
+    MyChildComponent
   ],
   providers: [
     CrisisService
   ]
 })
-export class CrisisCenterModule {}
+export class CrisisCenterModule {
+
+  constructor(private router:Router) {
+    // console.log('Child Routes: ', JSON.stringify(router.config, undefined, 2));
+  }
+}

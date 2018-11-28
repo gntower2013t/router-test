@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { slideInDownAnimation }   from '../animations';
 import { Crisis }         from './crisis.service';
 import { DialogService }  from '../dialog.service';
+import { printUrl } from './my-child/my-child.component';
 
 @Component({
   template: `
@@ -20,6 +21,7 @@ import { DialogService }  from '../dialog.service';
       <button (click)="save()">Save</button>
       <button (click)="cancel()">Cancel</button>
     </p>
+    <app-my-child prefix='detail'></app-my-child>
   </div>
   `,
   styles: ['input {width: 20em}'],
@@ -37,7 +39,12 @@ export class CrisisDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public dialogService: DialogService
-  ) {}
+  ) {
+    //segment.parameter is empty obj
+    //parameter is optional/matrix parmas like:
+    //'/team;id=33'
+    printUrl('detail', this.route);
+  }
 
   ngOnInit() {
     this.route.data
@@ -45,6 +52,9 @@ export class CrisisDetailComponent implements OnInit {
         this.editName = data.crisis.name;
         this.crisis = data.crisis;
       });
+
+    this.route.paramMap.subscribe(p => console.log('get id on child: ' + p.get('id')))
+
   }
 
   cancel() {
