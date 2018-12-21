@@ -44,6 +44,8 @@ export class CrisisDetailComponent implements OnInit {
     //parameter is optional/matrix parmas like:
     //'/team;id=33'
     printUrl('detail', this.route);
+    console.log('detail url: ' + router.url);
+
   }
 
   ngOnInit() {

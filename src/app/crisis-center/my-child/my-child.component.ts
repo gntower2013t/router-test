@@ -3,9 +3,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export function printUrl(msg: String, route: ActivatedRoute) {
   route.url.subscribe(url => {
-    const str = url.map(u => u.path + ' -- '+ JSON.stringify(u.parameters)).join(',');
+    const str = url.map(u => `[path:${u.path} / params: ${JSON.stringify(u.parameters)}]`).join(',');
     console.log(msg +' url segs: ' + str);
   })
+
+  route.queryParams.subscribe(q => console.log(`query param: ${JSON.stringify(q)}`));
 }
 
 @Component({
@@ -19,26 +21,34 @@ export class MyChildComponent implements OnInit {
   prefix:string;
 
   constructor(private router: Router, private route: ActivatedRoute) {
-    //Crisis cernter: the container attached to route config
+    //Crisis center: the container attached to route config
     console.log('my child: ' + route.component);
 
-    // printUrl('my child', this.route);
+    printUrl('my child', this.route);
 
     //entire url
-    console.log('url: ' + router.url);
+    console.log('my child url: ' + router.url);
 
-    //prefix is undefined!!
-    route.paramMap.subscribe(p => console.log(`my id: ` + this.prefix + '---' + p.get('id')))
+    //prefix is undefined!! @input not set??
+    route.paramMap.subscribe(p => console.log(
+      `child from ${this.prefix} pid: ${p.get('id')}`
+      ))
   }
 
   goto() {
-    // "." "./" is same, to "/crsis-center"
-    this.router.navigate(['./'], { relativeTo: this.route })
+    // "." "./" is same, to "/crisis-center"
+    // if detail, to "/"crisis-center/3"
+    // query param is lost
+    this.router.navigate(['./'], { relativeTo: this.route, queryParams: { aa:'xx'} })
   }
 
   ngOnInit() {
     //can get param same as parent
-    this.route.paramMap.subscribe(p => console.log(`my ${this.prefix} id: ` + p.get('id')))
+    this.route.paramMap.subscribe(
+      p => console.log(
+        `on-init child from ${this.prefix} pid: ${p.get('id')}`
+      )
+    )
   }
 
 }

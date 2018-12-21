@@ -16,13 +16,15 @@ import { printUrl } from './my-child/my-child.component';
 export class CrisisCenterComponent {
 
   constructor(private router:Router, private route:ActivatedRoute) {
-    // console.log(route.component);
+    console.log('center: ' + route.component);
 
-    //segements array is empty!
-    // printUrl('center', this.route)
+    //segments array is empty!
+    printUrl('center: ', this.route)
+    console.log('center url: ' + router.url);
+
 
     //null, param is bound to detail, not parent
-    route.paramMap.subscribe(p=>console.log('get id on parent: ' + p.get('id')))
+    route.paramMap.subscribe(p=>console.log('center: get id on parent: ' + p.get('id')))
   }
 
   goto() {
