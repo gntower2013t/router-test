@@ -39,7 +39,7 @@ export class MyChildComponent implements OnInit {
     // "." "./" is same, to "/crisis-center"
     // if detail, to "/"crisis-center/3"
     // query param is lost
-    this.router.navigate(['./'], { relativeTo: this.route, queryParams: { aa:'xx'} })
+    this.router.navigate(['./'], { relativeTo: this.route, queryParams: { aa:['xx', 'yy']} })
   }
 
   ngOnInit() {
